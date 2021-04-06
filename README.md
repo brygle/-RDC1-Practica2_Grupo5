@@ -11,6 +11,147 @@
 | 201503723 | Bryan Gustavo Lopez Echeverria |
 | 201503840 | Hugo René Figueroa Castillo |
 
+
+# Topología 1
+## Dispositivos
+
+##### CLOUD
+| CLOUD | Destino | Local Port | Remote Host | Remote Port |
+| ------ | ------ | ------ | ------ | ------ |
+| Cloud1 | Topología 2 | 30000 | 10.8.0.3 | 20000 |  
+
+
+##### PUERTOS Y CONFIGURACIONES
+| SWITCH | VTP MODE | PUERTOS | PORTCHANNEL | TIPO |
+| ------ | ------ | ------ | ------ | ------ |
+| ESW8 | CLIENT | f1/0,1 | Po1 | TRUNK |
+| ESW8 | CLIENT | f1/4,5 | Po3 | TRUNK |
+| ESW8 | CLIENT | f1/10 | -- | ACCESS |
+| ESW9 | CLIENT | f1/0,1 | Po1 | TRUNK |
+| ESW9 | CLIENT | f1/2,3 | Po2 | TRUNK |
+| ESW9 | CLIENT | f1/10 | -- | ACCESS 
+| ESW9 | CLIENT | f1/11 | -- | ACCESS 
+| ESW9 | CLIENT | f1/12 | -- | ACCESS 
+| ESW9 | CLIENT | f1/15 | -- | TRUNK 
+| ESW10 | CLIENT | f1/2,3 | Po2 | TRUNK |
+| ESW10 | CLIENT | f1/4,5 | Po3 | TRUNK |
+| ESW10 | CLIENT | f1/10 | -- | ACCESS |
+
+## Comandos utilizados
+### EtherSwitch8  
+```bash
+conf t
+int range f1/0 -1
+channel-group 1 mode on
+exit
+
+conf t
+int range f1/4 -5
+channel-group 3 mode on
+exit
+
+int Po1
+switchport mode trunk
+switchport trunk allowed vlan 1,10,20,30,1002-1005
+
+int Po3
+switchport mode trunk
+switchport trunk allowed vlan 1,10,20,30,1002-1005
+
+int f1/10
+switchport mode access
+switchport access vlan 10
+
+conf t
+vtp domain Grupo5
+vtp password Grupo5
+vtp mode client
+end
+```
+### EtherSwitch9  
+```bash
+conf t
+int range f1/0 -1
+channel-group 1 mode on
+exit
+
+conf t
+int range f1/2 -3
+channel-group 2 mode on
+exit
+
+
+
+int Po1
+switchport mode trunk
+switchport trunk allowed vlan 1,10,20,30,1002-1005
+
+
+int Po2
+switchport mode trunk
+switchport trunk allowed vlan 1,10,20,30,1002-1005
+
+int f1/15
+switchport mode trunk
+switchport trunk allowed vlan 1,10,20,30,1002-1005
+
+
+int f1/10
+switchport mode access
+switchport access vlan 20
+
+int f1/11
+switchport mode access
+switchport access vlan 30
+
+int f1/12
+switchport mode access
+switchport access vlan 30
+
+
+
+
+conf t
+vtp domain Grupo5
+vtp password Grupo5
+vtp mode client
+end
+
+```
+
+### EtherSwitch10  
+```bash
+conf t
+int range f1/2 -3
+channel-group 2 mode on
+exit
+
+
+conf t
+int range f1/4 -5
+channel-group 3 mode on
+exit
+
+
+int Po2
+switchport mode trunk
+switchport trunk allowed vlan 1,10,20,30,1002-1005
+
+int Po3
+switchport mode trunk
+switchport trunk allowed vlan 1,10,20,30,1002-1005
+
+
+int f1/10
+switchport mode access
+switchport access vlan 10
+
+conf t
+vtp domain Grupo5
+vtp password Grupo5
+vtp mode client
+end
+```
 ### Topología 2
 
 ##### CLOUD
