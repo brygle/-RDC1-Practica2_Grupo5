@@ -382,8 +382,147 @@ end
 
 sh spanning-tree root
 
-##### ANEXOS
-####### CAPTURAS
+# Topología 3
+## Dispositivos
+
+##### CLOUD
+| CLOUD | Destino | Local Port | Remote Host | Remote Port |
+| ------ | ------ | ------ | ------ | ------ |
+| Cloud1 | Topología 2 | 50000 | 10.8.0.3 | 40000 |  
+
+
+##### PUERTOS Y CONFIGURACIONES
+| SWITCH | VTP MODE | PUERTOS | PORTCHANNEL | TIPO |
+| ------ | ------ | ------ | ------ | ------ |
+| ESW1 | CLIENT | f1/0,1 | Po3 | TRUNK |
+| ESW1 | CLIENT | f1/4,5 | Po2 | TRUNK |
+| ESW1 | CLIENT | f1/6 | -- | TRUNK |
+| ESW2 | CLIENT | f1/0,1 | Po3 | TRUNK |
+| ESW2 | CLIENT | f1/2,3 | Po1 | TRUNK |
+| ESW2 | CLIENT | f1/4 | -- | ACCESS
+| ESW3 | CLIENT | f1/0,1 | Po4 | TRUNK
+| ESW3 | CLIENT | f1/2,3 | Po1 | TRUNK
+| ESW3 | CLIENT | f1/4,5 | Po2 | TRUNK
+| ESW3 | CLIENT | f1/6 | -- | ACCESS |
+| ESW4 | CLIENT | f1/0,1 | Po4 | TRUNK |
+| ESW4 | CLIENT | f1/2 | -- | ACCESS |
+
+## Comandos utilizados
+
+```bash
+# ESW1
+conf ter
+int range f1/0 -1
+channel-group 3 mode on
+exit
+int range f1/4 -5
+channel-group 2 mode on
+exit
+
+# ESW2
+conf ter
+int range f1/0 -1
+channel-group 3 mode on
+exit
+int range f1/2 -3
+channel-group 1 mode on
+exit
+
+# ESW3
+conf ter
+int range f1/2 -3
+channel-group 1 mode on
+exit
+int range f1/4 -5
+channel-group 2 mode on
+exit
+int range f1/0 -1
+channel-group 4 mode on
+exit
+
+# ESW4
+conf ter
+int range f1/0 -1
+channel-group 4 mode on
+exit
+
+
+# PARTE 2
+# ESW1
+conf ter
+int Po2
+switchport mode trunk
+switchport trunk allowed vlan 1,10,20,30,1002-1005
+exit
+
+int Po3
+switchport mode trunk
+switchport trunk allowed vlan 1,10,20,30,1002-1005
+exit
+
+# ESW2
+conf ter
+int Po1
+switchport mode trunk
+switchport trunk allowed vlan 1,10,20,30,1002-1005
+exit
+
+int Po3
+switchport mode trunk
+switchport trunk allowed vlan 1,10,20,30,1002-1005
+exit
+
+int f1/4
+switchport mode trunk
+switchport trunk allowed vlan 1,10,20,30,1002-1005
+exit
+
+# ESW3
+conf ter
+int Po1
+switchport mode trunk
+switchport trunk allowed vlan 1,10,20,30,1002-1005
+exit
+
+int Po2
+switchport mode trunk
+switchport trunk allowed vlan 1,10,20,30,1002-1005
+exit
+
+int Po4
+switchport mode trunk
+switchport trunk allowed vlan 1,10,20,30,1002-1005
+exit
+
+int f1/6
+switchport mode trunk
+switchport trunk allowed vlan 1,10,20,30,1002-1005
+exit
+
+# ESW4
+conf ter
+int Po4
+switchport mode trunk
+switchport trunk allowed vlan 1,10,20,30,1002-1005
+exit
+
+int f1/2
+switchport mode access
+switchport access vlan 20
+exit
+
+
+# PARTE 3
+# En todos los EtherSwitchs
+conf ter
+vtp domain Grupo5
+vtp password Grupo5
+vtp mode client
+end
+```
+
+## ANEXOS
+#### CAPTURAS
 ![CAPTURA1](Captures/c1.jpeg)
 ![CAPTURA2](Captures/c2.jpeg)
 ![CAPTURA3](Captures/c3.jpeg)
