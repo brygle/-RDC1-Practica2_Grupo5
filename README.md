@@ -384,9 +384,9 @@ sh spanning-tree root
 
 ##### ANEXOS
 ####### CAPTURAS
-![CAPTURA1](Captures/c1.jpg)
-![CAPTURA2](Captures/c2.jpg)
-![CAPTURA3](Captures/c3.jpg)
-![CAPTURA4](Captures/c4.jpg)
-![CAPTURA5](Captures/c5.jpg)
-![CAPTURA6](Captures/c6.jpg)
+![CAPTURA1](Captures/c1.jpeg)
+![CAPTURA2](Captures/c2.jpeg)
+![CAPTURA3](Captures/c3.jpeg)
+![CAPTURA4](Captures/c4.jpeg)
+![CAPTURA5](Captures/c5.jpeg)
+![CAPTURA6](Captures/c6.jpeg)
