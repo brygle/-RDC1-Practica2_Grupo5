@@ -29,10 +29,10 @@
 | ESW8 | CLIENT | f1/10 | -- | ACCESS |
 | ESW9 | CLIENT | f1/0,1 | Po1 | TRUNK |
 | ESW9 | CLIENT | f1/2,3 | Po2 | TRUNK |
-| ESW9 | CLIENT | f1/10 | -- | ACCESS 
-| ESW9 | CLIENT | f1/11 | -- | ACCESS 
-| ESW9 | CLIENT | f1/12 | -- | ACCESS 
-| ESW9 | CLIENT | f1/15 | -- | TRUNK 
+| ESW9 | CLIENT | f1/10 | -- | ACCESS
+| ESW9 | CLIENT | f1/11 | -- | ACCESS
+| ESW9 | CLIENT | f1/12 | -- | ACCESS
+| ESW9 | CLIENT | f1/15 | -- | TRUNK
 | ESW10 | CLIENT | f1/2,3 | Po2 | TRUNK |
 | ESW10 | CLIENT | f1/4,5 | Po3 | TRUNK |
 | ESW10 | CLIENT | f1/10 | -- | ACCESS |
@@ -381,3 +381,12 @@ spanning-tree vlan 30 root primary
 end
 
 sh spanning-tree root
+
+##### ANEXOS
+####### CAPTURAS
+![CAPTURA1](Captures/c1.jpg)
+![CAPTURA2](Captures/c2.jpg)
+![CAPTURA3](Captures/c3.jpg)
+![CAPTURA4](Captures/c4.jpg)
+![CAPTURA5](Captures/c5.jpg)
+![CAPTURA6](Captures/c6.jpg)
