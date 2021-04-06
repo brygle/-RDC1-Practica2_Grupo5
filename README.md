@@ -9,7 +9,7 @@
 | 201503515 | César David Juárez González |
 | 201503971 | Shubert Alexander Alonso Agustín |
 | 201503723 | Bryan Gustavo Lopez Echeverria |
-|  |  |
+| 201503840 | Hugo René Figueroa Castillo |
 
 ### Topología 2
 
